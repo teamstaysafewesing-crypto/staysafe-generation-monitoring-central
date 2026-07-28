@@ -9,81 +9,92 @@
             background-color: #000000;
             color: #ffffff;
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #ffd700;
-            color: #000000;
-            padding: 20px;
+            padding: 40px 20px;
+            text-align: center;
         }
         h1 {
-            font-size: 2.5rem;
-            margin: 10px 0;
-            color: #ffd700;
+            color: #FFD700;
+            font-size: 28px;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
         }
-        h2 {
-            font-size: 1.2rem;
+        p.subtitle-central {
             color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
             margin-bottom: 30px;
         }
-        .content {
-            margin: 50px auto;
+        hr {
+            border: 0;
+            height: 2px;
+            background-color: #FFD700;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+        .card {
+            max-width: 600px;
+            margin: 0 auto;
             padding: 20px;
         }
-        .btn {
-            display: inline-block;
-            background-color: #ffd700;
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        p.welcome-text {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 25px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .btn-yellow {
+            background-color: #FFD700;
             color: #000000;
-            padding: 12px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            padding: 10px 25px;
             text-decoration: none;
             border-radius: 5px;
-            margin: 20px 0;
-            transition: 0.3s;
+            font-weight: bold;
+            font-size: 14px;
+            transition: opacity 0.2s;
         }
-        .btn:hover {
-            background-color: #e5c100;
+        .btn-red {
+            background-color: #DC2626;
+            color: #ffffff;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+        .btn-yellow:hover, .btn-red:hover {
+            opacity: 0.85;
         }
     </style>
 </head>
 <body>
 
-    <!-- Tombol Masuk Bagian Atas --><div class="content">
-        <h1>STAYSAFE GENERATION</h1>
-        <h2>MONITORING CENTRAL (GMC)</h2>
+    <h1>STAYSAFE GENERATION</h1>
+    <p class="subtitle-central">MONITORING CENTRAL (GMC)</p>
+    
+    <hr>
+
+    <div class="card">
+        <h2>Website Resmi GMC</h2>
+        <p class="welcome-text">Selamat Datang di Website Staysafe Generation Monitoring Central.</p>
         
-        <hr style="border: 1px solid #ffd700; width: 80%; margin: 30px auto;">
-
-        <h3>Website Resmi GMC</h3>
-        <p>Selamat Datang di Website Staysafe Generation Monitoring Central.</p>
-
-        <!-- Tombol Masuk & Tombol Lapor -->
-        <br>
-        <a href="login.html" class="btn">Masuk</a>
-        
-        <!-- Tambahan Tombol Lapor di Sini -->
-        <br><br>
-        <a href="lapor.html" class="btn" style="background-color: #ff4d4d; color: #ffffff;">Buat Laporan / Aduan</a>
-    </div>
-    <div style="padding: 15px; text-align: right;">
-        <a href="login.html" class="btn" style="padding: 8px 20px; font-size: 1rem;">Masuk</a>
-    </div>
-
-    <div class="content">
-        <h1>STAYSAFE GENERATION</h1>
-        <h2>MONITORING CENTRAL (GMC)</h2>
-        
-        <hr style="border: 1px solid #ffd700; width: 80%; margin: 30px auto;">
-
-        <h3>Website Resmi GMC</h3>
-        <p>Selamat Datang di Website Staysafe Generation Monitoring Central.</p>
-
-        <!-- Tombol Masuk Bagian Tengah -->
-        <br>
-        <a href="login.html" class="btn">Masuk</a>
+        <div class="btn-container">
+            <!-- Tombol Masuk ke Halaman Login/Dashboard Tim -->
+            <a href="login.html" class="btn-yellow">Masuk</a>
+            
+            <!-- Tombol Menuju Formulir Laporan (Google Form) -->
+            <a href="lapor.html" class="btn-red">Buat Laporan / Aduan</a>
+        </div>
     </div>
 
 </body>
