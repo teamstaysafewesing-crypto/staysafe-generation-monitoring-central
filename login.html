@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login GMC</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#000;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.login-box{
+    width:350px;
+    background:#111;
+    padding:40px;
+    border:2px solid gold;
+    border-radius:15px;
+    text-align:center;
+}
+
+h1{
+    color:gold;
+    margin-bottom:10px;
+}
+
+h3{
+    margin-bottom:30px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:20px;
+    background:gold;
+    color:black;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ffd700;
+}
+
+a{
+    color:gold;
+    text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h1>GMC</h1>
+
+<h3>Login Monitoring Central</h3>
+
+<input type="text" placeholder="Username">
+
+<input type="password" placeholder="Password">
+
+<button onclick="location.href='dashboard.html'">
+Login
+</button>
+
+<br><br>
+
+<a href="index.html">← Kembali ke Beranda</a>
+
+</div>
+
+</body>
+</html>
