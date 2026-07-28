@@ -3,98 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staysafe Generation Monitoring Central (GMC)</title>
+    <title>Staysafe Generation - Monitoring Central (GMC)</title>
     <style>
         body {
             background-color: #000000;
             color: #ffffff;
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 40px 20px;
             text-align: center;
         }
         h1 {
-            color: #FFD700;
-            font-size: 28px;
+            color: #ffd700;
+            font-size: 2.5rem;
             margin-bottom: 5px;
-            letter-spacing: 1px;
         }
-        p.subtitle-central {
+        h3 {
             color: #ffffff;
-            font-size: 14px;
-            font-weight: bold;
             margin-bottom: 30px;
+            font-weight: normal;
         }
-        hr {
-            border: 0;
-            height: 2px;
-            background-color: #FFD700;
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-        }
-        .card {
+        .divider {
+            width: 80%;
             max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
+            height: 2px;
+            background-color: #ffd700;
+            margin-bottom: 40px;
         }
-        h2 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        p.welcome-text {
-            font-size: 14px;
-            color: #cccccc;
-            margin-bottom: 25px;
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
         }
         .btn-container {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 20px;
         }
-        .btn-yellow {
-            background-color: #FFD700;
+        .btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-login {
+            background-color: #ffd700;
             color: #000000;
-            padding: 10px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: opacity 0.2s;
         }
-        .btn-red {
-            background-color: #DC2626;
+        .btn-login:hover {
+            background-color: #e5c100;
+        }
+        .btn-report {
+            background-color: #e53935;
             color: #ffffff;
-            padding: 10px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: opacity 0.2s;
         }
-        .btn-yellow:hover, .btn-red:hover {
-            opacity: 0.85;
+        .btn-report:hover {
+            background-color: #c62828;
         }
     </style>
 </head>
 <body>
 
     <h1>STAYSAFE GENERATION</h1>
-    <p class="subtitle-central">MONITORING CENTRAL (GMC)</p>
-    
-    <hr>
+    <h3>MONITORING CENTRAL (GMC)</h3>
+    <div class="divider"></div>
 
-    <div class="card">
-        <h2>Website Resmi GMC</h2>
-        <p class="welcome-text">Selamat Datang di Website Staysafe Generation Monitoring Central.</p>
-        
-        <div class="btn-container">
-            <!-- Tombol Masuk ke Halaman Login/Dashboard Tim -->
-            <a href="login.html" class="btn-yellow">Masuk</a>
-            
-            <!-- Tombol Menuju Formulir Laporan (Google Form) -->
-            <a href="lapor.html" class="btn-red">Buat Laporan / Aduan</a>
-        </div>
+    <p>Website Resmi GMC<br>Selamat Datang di Website Staysafe Generation Monitoring Central.</p>
+
+    <div class="btn-container">
+        <a href="login.html" class="btn btn-login">Masuk</a>
+        <a href="lapor.html" class="btn btn-report">Buat Laporan / Aduan</a>
     </div>
 
 </body>
