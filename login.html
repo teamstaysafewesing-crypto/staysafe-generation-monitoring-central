@@ -101,15 +101,17 @@
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
 
-            // Kamu bisa mengganti "admin" dan "12345" sesuai keinginanmu
-            if (user === "admin" && pass === "12345") {
-                alert("Login Berhasil!");
-                window.location.href = "indeks.html"; // Mengarahkan kembali ke beranda setelah berhasil
-            } else {
-                alert("Username atau Password salah!");
-            }
-        });
-    </script>
+          <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-</body>
-</html>
+        if (username === "admin" && password === "12345") {
+            alert("Login Berhasil!");
+            window.location.href = "dashboard.html"; 
+        } else {
+            alert("Nama Pengguna atau Kata Sandi salah!");
+        }
+    });
+</script>
