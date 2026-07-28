@@ -3,105 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir Laporan - Monitoring Central (GMC)</title>
+    <title>Laporan - Staysafe Generation Monitoring Central</title>
     <style>
         body {
-            background-color: #000000;
-            color: #ffffff;
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            color: #333;
         }
         header {
-            background-color: #ffd700;
-            color: #000000;
-            padding: 15px 30px;
+            background-color: #1e1e2f;
+            color: white;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         header h1 {
-            font-size: 1.5rem;
             margin: 0;
+            font-size: 20px;
         }
         .back-btn {
-            background-color: #000000;
-            color: #ffd700;
+            color: white;
+            text-decoration: none;
+            background-color: #4F46E5;
             padding: 8px 15px;
             border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .back-btn:hover {
-            background-color: #333333;
+            font-size: 14px;
         }
         .container {
-            max-width: 700px;
-            margin: 40px auto;
-            background-color: #111111;
-            border: 2px solid #ffd700;
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
             padding: 30px;
             border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
         }
         h2 {
-            color: #ffd700;
-            text-align: center;
-            margin-top: 0;
+            color: #1e1e2f;
         }
-        p.subtitle {
-            text-align: center;
-            color: #ccc;
+        .subtitle {
+            color: #666;
             margin-bottom: 30px;
-            font-size: 0.95rem;
+            font-size: 14px;
         }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
+        .btn-form {
+            display: inline-block;
+            background-color: #4F46E5;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
             font-weight: bold;
-            color: #ffd700;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
         }
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            background-color: #222;
-            border: 1px solid #444;
-            color: #fff;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #ffd700;
-        }
-        textarea {
-            resize: vertical;
-            height: 120px;
-        }
-        .submit-btn {
-            background-color: #ffd700;
-            color: #000000;
-            padding: 12px;
-            width: 100%;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-        }
-        .submit-btn:hover {
-            background-color: #e5c100;
+        .btn-form:hover {
+            background-color: #4338ca;
         }
     </style>
 </head>
 <body>
-
     <header>
         <h1>GMC - Layanan Pengaduan Diwesing</h1>
         <a href="indeks.html" class="back-btn">&larr; Beranda</a>
@@ -109,56 +73,14 @@
 
     <div class="container">
         <h2>Formulir Laporan Kejahatan / Pelanggaran</h2>
-        <p class="subtitle">Sampaikan laporanmu di sini. Tim pengurus Diwesing akan memverifikasi dan meneruskannya ke pihak resmi Wesing.</p>
+        <p class="subtitle">Sampaikan laporanmu di sini. Tim pengurus Staysafe GMC akan memprosesnya melalui sistem terpusat.</p>
         
-        <form id="reportForm" action="https://formspree.io/f/xykrobkj" method="POST">
-            <div class="form-group">
-                <label for="reporter">Nama Pelapor / Korban</label>
-                <input type="text" id="reporter" placeholder="Masukkan nama atau nama akun" required>
-            </div>
-
-            <div class="form-group">
-                <label for="violator">Username / ID Pelaku</label>
-                <input type="text" id="violator" placeholder="Contoh: id_pelaku123" required>
-            </div>
-
-            <div class="form-group">
-                <label for="category">Jenis Pelanggaran</label>
-                <select id="category" required>
-                    <option value="">-- Pilih Jenis Kejahatan --</option>
-                    <option value="Penipuan / Scam">Penipuan / Scam</option>
-                    <option value="Pelecehan / Ancaman">Pelecehan / Ancaman</option>
-                    <option value="Akun Palsu / Impersonation">Akun Palsu / Impersonation</option>
-                    <option value="Lainnya">Lainnya</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="chronology">Kronologi Kejadian</label>
-                <textarea id="chronology" placeholder="Ceritakan singkat bagaimana kejadiannya..." required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Kirim Laporan ke Tim Diwesing</button>
-        </form>
+        <!-- Tombol Menuju Google Form -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdz7jVAJpC8J_1RcNm0l-TIpq0l62tv0XFmir6hGoSRhlezQw/viewform?usp=publish-editor" 
+           target="_blank" 
+           class="btn-form">
+           Buka Formulir Laporan (Google Form)
+        </a>
     </div>
-
-    <script>
-        document.getElementById('reportForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Mengambil data dari form
-            const reporter = document.getElementById('reporter').value;
-            const violator = document.getElementById('violator').value;
-            const category = document.getElementById('category').value;
-            const chronology = document.getElementById('chronology').value;
-
-            // Untuk sementara menampilkan konfirmasi berhasil terkirim
-            alert("Terima kasih, " + reporter + "! Laporan pelanggaran atas akun " + violator + " telah berhasil dikirim ke sistem Monitoring Central Diwesing.");
-            
-            // Reset form setelah dikirim
-            document.getElementById('reportForm').reset();
-        });
-    </script>
-
 </body>
 </html>
