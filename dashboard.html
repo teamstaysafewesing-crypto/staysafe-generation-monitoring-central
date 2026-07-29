@@ -110,7 +110,49 @@
             border-radius: 4px;
             font-size: 0.8rem;
         }
-    </style>
+    </style>.container-tabel {
+    margin: 20px auto;
+    padding: 20px;
+    background: #111;
+    border-radius: 8px;
+    color: #fff;
+    overflow-x: auto;
+}
+
+.container-tabel h2 {
+    margin-bottom: 15px;
+    color: #ffc107;
+}
+
+.tabel-anggota {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabel-anggota th, .tabel-anggota td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #333;
+}
+
+.tabel-anggota th {
+    background-color: #222;
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.tabel-anggota tr:hover {
+    background-color: #1a1a1a;
+}
+
+.badge.aktif {
+    background-color: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
 </head>
 <body>
 
@@ -158,7 +200,45 @@
                 </tr>
             </tbody>
         </table>
-
+<div class="container-tabel">
+    <h2>Daftar Anggota Pengurus</h2>
+    <table class="tabel-anggota">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>User ID</th>
+                <th>Nama</th>
+                <th>Jabatan</th>
+                <th>Bergabung</th>
+                <th>Status Keaktifan</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Contoh Baris Data 1 -->
+            <tr>
+                <td>1</td> <!-- Otomatis (Nomor urut baris) -->
+                <td>WES-001</td> <!-- Manual (User ID) -->
+                <td>Alvis Jakson</td> <!-- Manual (Nama) -->
+                <td>Ketua Umum</td> <!-- Manual (Jabatan) -->
+                <td>2026-01-15</td> <!-- Manual (Tanggal bergabung) -->
+                <td><span class="badge aktif">Aktif</span></td> <!-- Otomatis/Sistem -->
+                <td>Pengurus Inti</td> <!-- Manual (Keterangan) -->
+            </tr>
+            
+            <!-- Contoh Baris Data 2 -->
+            <tr>
+                <td>2</td>
+                <td>WES-002</td>
+                <td>Nama Anggota 2</td>
+                <td>Wakil Ketua</td>
+                <td>2026-02-01</td>
+                <td><span class="badge aktif">Aktif</span></td>
+                <td>Penanggung Jawab Kasus</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
     </div>
 
 </body>
