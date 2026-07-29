@@ -155,15 +155,16 @@
         }
         .form-input-box {
             background: #1a1a1a;
-            padding: 15px;
+            padding: 20px;
             border-radius: 5px;
             margin-bottom: 20px;
             border: 1px solid #444;
             display: none;
         }
         .form-input-box input {
-            padding: 8px;
-            margin: 5px 5px 15px 0;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
             background: #222;
             border: 1px solid #555;
             color: #fff;
@@ -171,8 +172,9 @@
         }
         .form-input-box label {
             font-size: 13px;
-            color: #ccc;
+            color: #ffc107;
             display: block;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -206,11 +208,11 @@
     <!-- Bagian Tabel Daftar Anggota Pengurus -->
     <div class="container-tabel">
         <h2 class="section-title">Daftar Anggota Pengurus</h2>
-        <button class="btn-aksi" onclick="bukaFormTambah()">+ Tambah Anggota Baru</button>
+        <button class="btn-aksi" onclick="bukaFormTambah()">+ Tambah Anggota</button>
         
-        <!-- Form Input / Edit Anggota -->
+        <!-- Kotak Form Input / Edit Anggota -->
         <div id="form-box" class="form-input-box">
-            <h3 id="form-title" style="color: #ffc107; margin-bottom: 10px;">Form Anggota</h3>
+            <h3 id="form-title" style="color: #ffc107; margin-bottom: 15px;">Form Anggota</h3>
             <input type="hidden" id="edit-index">
             <div>
                 <label>User ID (Manual):</label>
@@ -250,7 +252,7 @@
                 </tr>
             </thead>
             <tbody id="tabel-anggota-body">
-                <!-- Data akan dimuat otomatis lewat JavaScript -->
+                <!-- Data dimuat lewat skrip -->
             </tbody>
         </table>
     </div>
@@ -277,7 +279,6 @@
     </div>
 
     <script>
-        // Data awal default
         let dataAnggota = JSON.parse(localStorage.getItem('dataAnggota')) || [
             { userid: "WES-001", nama: "Alvis Jakson", jabatan: "Ketua Umum", bergabung: "2026-01-15", keterangan: "Pengurus Inti" },
             { userid: "WES-002", nama: "Nama Anggota 2", jabatan: "Wakil Ketua", bergabung: "2026-02-01", keterangan: "Penanggung Jawab Kasus" }
@@ -289,10 +290,9 @@
             let pengurusAktif = 0;
 
             dataAnggota.forEach((item, index) => {
-                let nomorUrut = index + 1; // Otomatis
+                let nomorUrut = index + 1;
                 let statusBadge = "";
                 
-                // Status otomatis aktif jika nama terisi, non-aktif jika kosong
                 if (item.nama && item.nama.trim() !== "") {
                     statusBadge = `<span class="badge aktif">Aktif</span>`;
                     pengurusAktif++;
@@ -379,7 +379,6 @@
             }
         }
 
-        // Jalankan saat halaman dibuka
         window.onload = muatTabel;
     </script>
 </body>
