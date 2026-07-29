@@ -215,6 +215,10 @@
             <h3 id="form-title" style="color: #ffc107; margin-bottom: 15px;">Form Anggota</h3>
             <input type="hidden" id="edit-index">
             <div>
+                <label>Nomor Urut (Otomatis):</label>
+                <input type="text" id="input-no" readonly style="background-color: #111; color: #888; cursor: not-allowed;">
+            </div>
+            <div>
                 <label>User ID (Manual):</label>
                 <input type="text" id="input-userid" placeholder="Contoh: WES-003">
             </div>
@@ -324,6 +328,7 @@
             document.getElementById('form-box').style.display = 'block';
             document.getElementById('form-title').innerText = 'Tambah Anggota Baru';
             document.getElementById('edit-index').value = '';
+            document.getElementById('input-no').value = dataAnggota.length + 1; // Otomatis nomor berikutnya
             document.getElementById('input-userid').value = '';
             document.getElementById('input-nama').value = '';
             document.getElementById('input-jabatan').value = '';
@@ -365,6 +370,7 @@
             document.getElementById('form-box').style.display = 'block';
             document.getElementById('form-title').innerText = 'Edit Data Anggota';
             document.getElementById('edit-index').value = index;
+            document.getElementById('input-no').value = index + 1; // Menampilkan nomor urut baris saat ini
             document.getElementById('input-userid').value = item.userid;
             document.getElementById('input-nama').value = item.nama;
             document.getElementById('input-jabatan').value = item.jabatan;
