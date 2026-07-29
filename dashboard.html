@@ -116,41 +116,64 @@
         .badge.aktif {
             background-color: #28a745;
         }
-        .btn-tambah {
-            display: inline-block;
+        .badge.nonaktif {
+            background-color: #dc3545;
+        }
+        .btn-aksi {
             background-color: #ffc107;
             color: #000;
             padding: 10px 18px;
             text-decoration: none;
             font-weight: bold;
+            border: none;
             border-radius: 5px;
+            cursor: pointer;
             margin-bottom: 15px;
-            transition: 0.3s;
+            display: inline-block;
         }
-        .btn-tambah:hover {
-            background-color: #e0a800;
-        }
+        .btn-aksi:hover { background-color: #e0a800; }
         .btn-edit {
             background-color: #ffc107;
             color: #000;
             padding: 5px 10px;
-            text-decoration: none;
+            border: none;
             font-size: 12px;
             font-weight: bold;
             border-radius: 4px;
+            cursor: pointer;
             margin-right: 5px;
         }
         .btn-hapus {
             background-color: #dc3545;
             color: #fff;
             padding: 5px 10px;
-            text-decoration: none;
+            border: none;
             font-size: 12px;
             font-weight: bold;
             border-radius: 4px;
+            cursor: pointer;
         }
-        .btn-edit:hover { background-color: #e0a800; }
-        .btn-hapus:hover { background-color: #c82333; }
+        .form-input-box {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            display: none;
+        }
+        .form-input-box input {
+            padding: 8px;
+            margin: 5px 5px 15px 0;
+            background: #222;
+            border: 1px solid #555;
+            color: #fff;
+            border-radius: 4px;
+        }
+        .form-input-box label {
+            font-size: 13px;
+            color: #ccc;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -176,15 +199,43 @@
         </div>
         <div class="stat-card">
             <h3>Pengurus Aktif</h3>
-            <p>5 Orang</p>
+            <p id="jumlah-pengurus">0 Orang</p>
         </div>
     </div>
 
     <!-- Bagian Tabel Daftar Anggota Pengurus -->
     <div class="container-tabel">
         <h2 class="section-title">Daftar Anggota Pengurus</h2>
-        <a href="#" class="btn-tambah">+ Tambah Anggota</a>
+        <button class="btn-aksi" onclick="bukaFormTambah()">+ Tambah Anggota Baru</button>
         
+        <!-- Form Input / Edit Anggota -->
+        <div id="form-box" class="form-input-box">
+            <h3 id="form-title" style="color: #ffc107; margin-bottom: 10px;">Form Anggota</h3>
+            <input type="hidden" id="edit-index">
+            <div>
+                <label>User ID (Manual):</label>
+                <input type="text" id="input-userid" placeholder="Contoh: WES-003">
+            </div>
+            <div>
+                <label>Nama (Manual - Kosongkan jika Non-Aktif):</label>
+                <input type="text" id="input-nama" placeholder="Nama Lengkap">
+            </div>
+            <div>
+                <label>Jabatan (Manual):</label>
+                <input type="text" id="input-jabatan" placeholder="Jabatan Pengurus">
+            </div>
+            <div>
+                <label>Tanggal Bergabung (Manual):</label>
+                <input type="date" id="input-bergabung">
+            </div>
+            <div>
+                <label>Keterangan (Manual):</label>
+                <input type="text" id="input-keterangan" placeholder="Keterangan Tambahan">
+            </div>
+            <button class="btn-aksi" onclick="simpanAnggota()">Simpan Data</button>
+            <button class="btn-aksi" style="background-color: #555; color: #fff;" onclick="tutupForm()">Batal</button>
+        </div>
+
         <table class="tabel-anggota">
             <thead>
                 <tr>
@@ -198,33 +249,8 @@
                     <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>WES-001</td>
-                    <td>Alvis Jakson</td>
-                    <td>Ketua Umum</td>
-                    <td>2026-01-15</td>
-                    <td><span class="badge aktif">Aktif</span></td>
-                    <td>Pengurus Inti</td>
-                    <td>
-                        <a href="#" class="btn-edit">Edit</a>
-                        <a href="#" class="btn-hapus">Hapus</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>WES-002</td>
-                    <td>Nama Anggota 2</td>
-                    <td>Wakil Ketua</td>
-                    <td>2026-02-01</td>
-                    <td><span class="badge aktif">Aktif</span></td>
-                    <td>Penanggung Jawab Kasus</td>
-                    <td>
-                        <a href="#" class="btn-edit">Edit</a>
-                        <a href="#" class="btn-hapus">Hapus</a>
-                    </td>
-                </tr>
+            <tbody id="tabel-anggota-body">
+                <!-- Data akan dimuat otomatis lewat JavaScript -->
             </tbody>
         </table>
     </div>
@@ -250,5 +276,111 @@
         </table>
     </div>
 
+    <script>
+        // Data awal default
+        let dataAnggota = JSON.parse(localStorage.getItem('dataAnggota')) || [
+            { userid: "WES-001", nama: "Alvis Jakson", jabatan: "Ketua Umum", bergabung: "2026-01-15", keterangan: "Pengurus Inti" },
+            { userid: "WES-002", nama: "Nama Anggota 2", jabatan: "Wakil Ketua", bergabung: "2026-02-01", keterangan: "Penanggung Jawab Kasus" }
+        ];
+
+        function muatTabel() {
+            const tbody = document.getElementById('tabel-anggota-body');
+            tbody.innerHTML = "";
+            let pengurusAktif = 0;
+
+            dataAnggota.forEach((item, index) => {
+                let nomorUrut = index + 1; // Otomatis
+                let statusBadge = "";
+                
+                // Status otomatis aktif jika nama terisi, non-aktif jika kosong
+                if (item.nama && item.nama.trim() !== "") {
+                    statusBadge = `<span class="badge aktif">Aktif</span>`;
+                    pengurusAktif++;
+                } else {
+                    statusBadge = `<span class="badge nonaktif">Non-Aktif</span>`;
+                }
+
+                let row = `<tr>
+                    <td>${nomorUrut}</td>
+                    <td>${item.userid}</td>
+                    <td>${item.nama ? item.nama : '<span style="color:#777;">(Kosong)</span>'}</td>
+                    <td>${item.jabatan}</td>
+                    <td>${item.bergabung}</td>
+                    <td>${statusBadge}</td>
+                    <td>${item.keterangan}</td>
+                    <td>
+                        <button class="btn-edit" onclick="editAnggota(${index})">Edit</button>
+                        <button class="btn-hapus" onclick="hapusAnggota(${index})">Hapus</button>
+                    </td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+
+            document.getElementById('jumlah-pengurus').innerText = pengurusAktif + " Orang";
+            localStorage.setItem('dataAnggota', JSON.stringify(dataAnggota));
+        }
+
+        function bukaFormTambah() {
+            document.getElementById('form-box').style.display = 'block';
+            document.getElementById('form-title').innerText = 'Tambah Anggota Baru';
+            document.getElementById('edit-index').value = '';
+            document.getElementById('input-userid').value = '';
+            document.getElementById('input-nama').value = '';
+            document.getElementById('input-jabatan').value = '';
+            document.getElementById('input-bergabung').value = '';
+            document.getElementById('input-keterangan').value = '';
+        }
+
+        function tutupForm() {
+            document.getElementById('form-box').style.display = 'none';
+        }
+
+        function simpanAnggota() {
+            const index = document.getElementById('edit-index').value;
+            const userid = document.getElementById('input-userid').value;
+            const nama = document.getElementById('input-nama').value;
+            const jabatan = document.getElementById('input-jabatan').value;
+            const bergabung = document.getElementById('input-bergabung').value;
+            const keterangan = document.getElementById('input-keterangan').value;
+
+            if(!userid) {
+                alert("User ID wajib diisi!");
+                return;
+            }
+
+            const anggotaBaru = { userid, nama, jabatan, bergabung, keterangan };
+
+            if (index === '') {
+                dataAnggota.push(anggotaBaru);
+            } else {
+                dataAnggota[index] = anggotaBaru;
+            }
+
+            tutupForm();
+            muatTabel();
+        }
+
+        function editAnggota(index) {
+            const item = dataAnggota[index];
+            document.getElementById('form-box').style.display = 'block';
+            document.getElementById('form-title').innerText = 'Edit Data Anggota';
+            document.getElementById('edit-index').value = index;
+            document.getElementById('input-userid').value = item.userid;
+            document.getElementById('input-nama').value = item.nama;
+            document.getElementById('input-jabatan').value = item.jabatan;
+            document.getElementById('input-bergabung').value = item.bergabung;
+            document.getElementById('input-keterangan').value = item.keterangan;
+        }
+
+        function hapusAnggota(index) {
+            if(confirm("Apakah kamu yakin ingin menghapus anggota ini?")) {
+                dataAnggota.splice(index, 1);
+                muatTabel();
+            }
+        }
+
+        // Jalankan saat halaman dibuka
+        window.onload = muatTabel;
+    </script>
 </body>
 </html>
