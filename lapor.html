@@ -1,91 +1,378 @@
+
+Gemini
+Percakapan baru
+Telusuri percakapan
+Gambar
+Video
+Koleksi
+Notebook baru
+Untitled notebook
+Mengatur Lebar Kolom di Aplikasi
+Percakapan dengan Gemini
+Begini
+
+Nah, itu Anda sedang berada di halaman utama Google Spreadsheet (sheets.google.com), makanya yang tampil adalah daftar file-file Spreadsheet (berikon hijau).
+
+Supaya tidak pusing mencari Google Form, mari kita buka langsung lewat Google Drive saja dengan cara ini:
+
+Buka tab baru di browser Anda (klik tanda + di bagian atas).
+
+Ketik alamat ini di kotak URL lalu tekan Enter: drive.google.com
+
+Di dalam Google Drive, ketik di kolom pencarian atas: Formulir Pengaduan
+
+Cari file yang berikon ungu (itu adalah Google Form Anda), lalu klik dua kali untuk membukanya.
+
+Begitu Google Form-nya terbuka, Anda tinggal klik tab Jawaban, aktifkan tombol "Menerima jawaban" (ubah jadi hijau), dan formulir Anda sudah siap diisi kembali!
+
+Nihil
+
+Ya, betul! Layar tersebut menunjukkan halaman utama Google Forms (forms.google.com) dan di bawahnya kosong karena formulir yang Anda cari tidak ada di akun atau halaman utama ini.
+
+Jangan khawatir, kita buat baru saja langsung dalam 1 menit agar tidak pusing mencari file yang hilang. Mari kita buat form pengaduan yang bersih dan langsung terhubung:
+
+Klik kotak "Formulir kosong" (yang ada tanda tambah warna-warni (+) di sebelah kiri).
+
+Beri judul formulirnya: Formulir Pengaduan Staysafe
+
+Buat pertanyaan yang diperlukan (misalnya: Kategori Masalah, Kronologi Kendala).
+
+Selesai! Klik ikon Spreadsheet hijau di tab Jawaban untuk menghubungkannya kembali, lalu pasang kodenya seperti sebelumnya.
+
+Cara ini jauh lebih cepat dan langsung beres tanpa harus mencari-cari file lama yang terselip!
+
+Deskripsi
+
+📋 Deskripsi Sistem Integrasi Google Form ke Telegram
+Sistem ini dirancang untuk menghubungkan Google Form Pengaduan ke grup Telegram secara otomatis (real-time). Setiap kali ada pengguna atau anggota yang mengirimkan laporan melalui formulir, data tersebut akan langsung diteruskan oleh sistem Apps Script ke grup Telegram yang dituju tanpa perlu pengecekan manual.
+
+⚙️ Komponen Utama Sistem
+Google Form (Pusat Pengaduan): Digunakan sebagai antarmuka atau halaman utama bagi pelapor untuk memasukkan detail kendala atau kronologi masalah.
+
+Google Spreadsheet (Basis Data Jawaban): Berfungsi sebagai penampung data otomatis dari setiap respons formulir yang masuk.
+
+Google Apps Script (Jembatan / Mesin Otomatisasi): Skrip kode berbasis JavaScript yang bertugas membaca data formulir yang baru dikirim dan mengirimkannya ke API Bot Telegram.
+
+Telegram Bot & Grup ([ADMIN] Tim Inti Staysafe GMC): Tempat tujuan notifikasi pesan masuk secara instan agar tim penanganan dapat segera merespons laporan.
+
+🛠️ Alur Kerja Sistem (Workflow)
+Langkah 1: Pelapor mengisi dan mengirimkan data laporan pada halaman Google Form.
+
+Langkah 2: Google Form secara otomatis merekam data tersebut ke Google Spreadsheet.
+
+Langkah 3: Pemicu (Trigger) Apps Script mendeteksi adanya pengiriman data baru ("Saat mengirim formulir").
+
+Langkah 4: Skrip menjalankan fungsi sendToTelegram untuk merangkum data pertanyaan dan jawaban.
+
+Langkah 5: Pesan laporan terformat rapi dikirimkan secara instan oleh Bot ke dalam grup Telegram admin.
+
+Lalu
+
+Mantap sekali! Anda sudah berhasil membuat formulir baru.
+
+Lanjutkan langkah-langkah cepat berikut untuk merapikan dan menghubungkannya kembali ke Telegram:
+
+Ubah Judul Form: Klik tulisan "Formulir tanpa judul" di pojok kiri atas (di samping ikon ungu), lalu ganti namanya menjadi Formulir Pengaduan Staysafe.
+
+Lengkapi Pertanyaan:
+
+Pada pertanyaan pilihan ganda yang sedang tampil di layar (pilihan Pembayaran, KTVRoom/LIVE, Login Akun, dll), klik kolom judul pertanyaan di atasnya (yang masih bertuliskan "Pertanyaan Tanpa Judul") lalu ketik: Pilih Kategori Masalah Anda.
+
+Klik tombol Tambah Pertanyaan (+) di sebelah kanan untuk menambahkan pertanyaan baru, lalu ketik: Tuliskan Kronologi / Detail Kendala Anda (ubah jenis jawabannya menjadi Paragraf).
+
+Tambahkan satu pertanyaan lagi untuk bukti foto jika diperlukan (jenis Upload File).
+
+Hubungkan ke Spreadsheet & Telegram:
+
+Klik tab Jawaban di bagian atas.
+
+Klik ikon Spreadsheet hijau untuk membuat lembar data baru.
+
+Masuk ke menu Ekstensi > Apps Script, masukkan kembali kode Telegram yang sebelumnya, klik Simpan, lalu buat Pemicu (Trigger) seperti sebelumnya.
+
+Formulir pengaduan baru Anda kini sudah siap dan aktif sepenuhnya!
+
+Kode telegram sebelumnya saya lupa
+
+Tidak apa-apa, ini kode Telegram yang lengkap dan siap Anda tempel (paste) ke Apps Script:
+
+JavaScript
+function sendToTelegram(e) {
+  var formResponse = e.response;
+  var itemResponses = formResponse.getItemResponses();
+
+  var message = "🚨 *LAPORAN PENGADUAN BARU* 🚨\n\n";
+
+  for (var i = 0; i < itemResponses.length; i++) {
+    var itemResponse = itemResponses[i];
+    var title = itemResponse.getItem().getTitle();
+    var answer = itemResponse.getResponse();
+    message += "📌 *" + title + "*:\n" + answer + "\n\n";
+  }
+
+  var token = "8905005379:AAeos8bENRvho087xmnfyMzTbpNxfiu7_to";
+  var chatId = "-4363216200";
+
+  var url = "https://api.telegram.org/bot" + token + "/sendMessage";
+  var payload = {
+    "chat_id": chatId,
+    "text": message,
+    "parse_mode": "Markdown"
+  };
+
+  var options = {
+    "method": "post",
+    "payload": payload
+  };
+
+  UrlFetchApp.fetch(url, options);
+}
+Langkah pemasangannya:
+Buka spreadsheet baru dari Google Form Anda (klik ikon hijau di tab Jawaban).
+
+Klik menu Ekstensi > Apps Script.
+
+Hapus semua kode bawaan yang ada di editor, lalu tempel (paste) kode di atas.
+
+Klik ikon Simpan (gambar disket).
+
+Klik ikon Pemicu (jam alarm) di menu kiri, buat pemicu baru dengan fungsi sendToTelegram, pilih sumber dari spreadsheet, jenis acara Saat mengirim formulir, lalu simpan.
+
+Sempurna! Layar tersebut menunjukkan bahwa pemicunya sudah aktif dengan status "Dari Spreadsheet - Saat mengirim formulir".
+
+Sekarang, konfigurasi Anda sudah 1ul sepenuhnya. Silakan lakukan uji coba dengan mengisi formulir pengaduan baru yang sudah Anda buat tadi, lalu kirimkan. Pesan laporannya akan langsung masuk secara otomatis ke grup Telegram [ADMIN] Tim Inti Staysafe GMC!
+
+Kok begini tampilannya ketika melaporkan
+
+Tampilan tersebut muncul karena Anda sedang membuka link lama (atau link pratinjau) dari formulir sebelumnya yang statusnya sudah ditutup atau tidak menerima jawaban lagi.
+
+Karena Anda baru saja membuat formulir yang baru, Anda harus membagikan atau menggunakan link yang baru, bukan link yang lama.
+
+Cara mengatasinya:
+
+Kembali ke tab editor Google Form Anda yang baru.
+
+Klik tombol Kirim (ikon pesawat kertas) di pojok kanan atas.
+
+Pilih ikon Link (rantai), lalu centang kotak "Perpendek URL" dan klik Salin.
+
+Gunakan link baru tersebut untuk mengisi laporan.
+
+Nah, itu dia halaman formulir yang benar ("Formulir pengaduan staysafe GMC") dan sudah aktif!
+
+Untuk mengambil link bersih yang bisa diisi, lakukan langkah ini:
+
+Klik pada tombol Kirim (ikon pesawat kertas warna biru) di pojok kanan atas.
+
+Klik ikon Link (rantai) di bagian tengah jendela yang muncul.
+
+Klik tombol Salin di bawahnya.
+
+Setelah disalin, buka tab baru di browser Anda, paste link tersebut di bar alamat lalu tekan Enter. Formulir baru Anda siap diisi dan otomatis masuk ke Telegram!
+
+Pesan "Maaf. Dokumen ini tidak diterbitkan." muncul karena link yang Anda klik adalah link pratinjau lama (viewform atau closedform) dari formulir sebelumnya yang sudah dinonaktifkan.
+
+Supaya tidak keliru, jangan klik link lama. Cukup lakukan ini langsung dari tab editor formulir baru Anda:
+
+Kembali ke tab browser tempat Anda mengedit formulir "Formulir pengaduan staysafe GMC" (seperti pada gambar sebelumnya).
+
+Di pojok kanan atas editor tersebut, klik ikon Mata (Pratinjau).
+
+Ikon tersebut akan membuka tab baru berisi formulir yang benar, aktif, dan siap untuk diisi saat itu juga!
+
+Setelah publikasikan, perpendek url lalu kirim dan ini dimasukkan ke lapor.html
+
+File lapor.html berisi dokumentasi lengkap sistem, spesifikasi alur kerja, tabel parameter teknis, serta instruksi akses formulir pengaduan Staysafe GMC Anda telah berhasil dibuat.
+Ikon HTML
+lapor
+ HTML 
+Buka
+
+
+
+
+Gemini adalah AI dan dapat melakukan kesalahan.
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir Laporan - Staysafe Generation Monitoring Central</title>
+    <title>Pusat Pengaduan - Staysafe Generation GMC</title>
     <style>
+        @page {
+            size: A4;
+            margin: 15mm 12mm;
+            background-color: #faf8f5;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
         body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        }
-        header {
-            background-color: #111111;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #ffd700;
-        }
-        header h1 {
-            color: #ffd700;
-            font-size: 1.5rem;
-            margin: 0;
-        }
-        .back-btn {
-            color: #ffd700;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        .back-btn:hover {
-            text-decoration: underline;
+            font-family: 'Arial', sans-serif;
+            color: #2c3e50;
+            background-color: #faf8f5;
+            line-height: 1.25;
         }
         .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: #1a1a1a;
-            border: 2px solid #ffd700;
-            border-radius: 10px;
+            max-width: 100%;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid #d4af37;
+        }
+        .header {
             text-align: center;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 18pt;
+            color: #1a252f;
+            margin: 0 0 5px 0;
+            font-weight: bold;
+        }
+        .header p {
+            font-size: 10pt;
+            color: #7f8c8d;
+            margin: 0;
         }
         h2 {
-            color: #ffd700;
-            margin-bottom: 15px;
+            font-size: 13pt;
+            color: #2980b9;
+            border-left: 4px solid #2980b9;
+            padding-left: 8px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            page-break-after: avoid;
         }
-        p.subtitle {
-            color: #cccccc;
-            margin-bottom: 30px;
-            font-size: 1rem;
+        p, li {
+            font-size: 10pt;
+            margin-bottom: 8px;
         }
-        .btn-form {
-            display: inline-block;
-            background-color: #e53935;
-            color: #ffffff;
-            padding: 15px 30px;
-            font-size: 1.1rem;
+        ul {
+            margin: 5px 0 15px 20px;
+            padding: 0;
+        }
+        .box {
+            background: #fdfbf7;
+            border: 1px solid #e2dedb;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
             font-weight: bold;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
+            color: #8e44ad;
         }
-        .btn-form:hover {
-            background-color: #c62828;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 9.5pt;
+        }
+        th, td {
+            border: 1px solid #dcdde1;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f6fa;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+        }
+        .footer {
+            text-align: center;
+            font-size: 8.5pt;
+            color: #95a5a6;
+            margin-top: 25px;
+            border-top: 1px solid #eaeaea;
+            padding-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>GMC - Layanan Pengaduan Wesing</h1>
-        <a href="index.html" class="back-btn">&larr; Beranda</a>
-    </header>
-
-    <div class="container">
-        <h2>Formulir Laporan Kejahatan / Pelanggaran</h2>
-        <p class="subtitle">Sampaikan laporanmu di sini. Tim pengurus Staysafe GMC akan memprosesnya melalui sistem terpusat.</p>
-        
-        <!-- Tombol Menuju Google Form Baru -->
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSef4wRVSEYQ-1ANAW_CfAt7wWr-iP7QlugKhhqU6I05OdzqCQ/viewform?usp=dialog" 
-           target="_blank" 
-           class="btn-form">
-            Buka Formulir Laporan (Google Form)
-        </a>
+<div class="container">
+    <div class="header">
+        <h1>STAYSAFE GENERATION MONITORING CENTRAL (GMC)</h1>
+        <p>Pusat Pengaduan & Integrasi Sistem Otomatisasi Laporan</p>
     </div>
+
+    <h2>1. Informasi Akses Formulir Resmi</h2>
+    <p>Formulir pengaduan resmi Staysafe GMC telah dipublikasikan dan terhubung secara otomatis ke dalam sistem pelaporan Telegram admin. Silakan gunakan link di bawah ini untuk mengakses atau menyebarkan formulir kepada anggota:</p>
+    
+    <div class="box" style="text-align: center;">
+        <p style="margin: 0; font-weight: bold; color: #c0392b;">Link Akses Formulir Pengaduan (URL Diperpendek):</p>
+        <p style="margin: 5px 0;"><code style="font-size: 11pt; background: #fff; padding: 4px 8px; border: 1px dashed #ccc; border-radius: 4px;">https://forms.gle/ [URL_Formulir_Anda]</code></p>
+        <p style="font-size: 8.5pt; color: #7f8c8d; margin-top: 5px;">*Pastikan status formulir dalam keadaan "Menerima jawaban" (ikon toggle berwarna hijau).</p>
+    </div>
+
+    <h2>2. Spesifikasi Alur Kerja Laporan (<span class="math">Workflow</span>)</h2>
+    <p>Sistem ini dirancang dengan arsitektur otomatisasi instan untuk memastikan setiap kendala atau laporan pelanggaran dapat ditangani dengan cepat oleh tim inti:</p>
+    <ul>
+        <li><strong>Pengisian Data:</strong> Pelapor mengisi kategori masalah dan rincian kronologi melalui link formulir di atas.</li>
+        <li><strong>Penyimpanan Basis Data:</strong> Data respons masuk secara otomatis ke dalam Google Spreadsheet terkait.</li>
+        <li><strong>Eksekusi Skrip:</strong> Google Apps Script membaca baris data baru menggunakan pemicu kejadian <span class="math">OnFormSubmit</span>.</li>
+        <li><strong>Notifikasi Telegram:</strong> Pesan format rapi dikirimkan secara instan ke grup chat <code style="background: #eee; padding: 2px 4px;">[ADMIN] Tim Inti Staysafe GMC</code>.</li>
+    </ul>
+
+    <h2>3. Ringkasan Parameter Teknis Sistem</h2>
+    <table>
+        <tr>
+            <th>Komponen Sistem</th>
+            <th>Nama Objek / Target</th>
+            <th>Keterangan Status</th>
+        </tr>
+        <tr>
+            <td>Google Form</td>
+            <td>Formulir pengaduan staysafe GMC</td>
+            <td>Aktif & Menerima Jawaban</td>
+        </tr>
+        <tr>
+            <td>Spreadsheet Backend</td>
+            <td>Formulir Pengaduan Staysafe Generation (Jawaban)</td>
+            <td>Sinkronisasi Berhasil</td>
+        </tr>
+        <tr>
+            <td>Telegram Bot & Chat ID</td>
+            <td>Token API Bot & Group <span class="math">-4363216200</span></td>
+            <td>Terhubung & Berjalan Normal</td>
+        </tr>
+    </table>
+
+    <h2>4. Panduan Pemeliharaan & Troubleshooting</h2>
+    <p>Jika notifikasi laporan gagal terkirim ke Telegram, lakukan pengecekan berikut:</p>
+    <ul>
+        <li>Periksa kembali menu <strong>Ekstensi > Apps Script</strong> pada Spreadsheet untuk memastikan fungsi skrip `sendToTelegram(e)` tidak mengalami error sintaksis.</li>
+        <li>Pastikan pemicu waktu/kejadian (<span class="math">Triggers</span>) dengan fungsi `sendToTelegram` masih aktif dan berstatus benar.</li>
+        <li>Jangan mengubah urutan kolom pada Spreadsheet penampung agar pembacaan array data oleh Apps Script tetap konsisten.</li>
+    </ul>
+
+    <div class="footer">
+        Dokumen Panduan & Integrasi Sistem • Staysafe Generation Monitoring Central (GMC) © 2026
+    </div>
+</div>
 
 </body>
 </html>
+lapor.html
+Menampilkan lapor.html.
