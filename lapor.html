@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pusat Pengaduan - Staysafe Generation GMC</title>
     <style>
-        /* Reset Dasar */
         @page {
             size: A4;
             margin: 0;
@@ -18,54 +17,22 @@
             padding: 0;
             font-family: 'Arial', sans-serif;
             color: #333;
-            background-color: #faf8f5;
+            background-color: #0b0b0b;
             line-height: 1.4;
         }
-
-        /* Desain Kop Surat (Header) Baru */
-        .header-wrapper {
+        .banner-header {
             width: 100%;
-            background-color: #0a0a0a; /* Latar belakang hitam pekat */
-            color: #d4af37; /* Warna emas untuk teks utama */
-            padding: 30px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 30px;
-            border-bottom: 5px solid #d4af37; /* Garis bawah emas tebal */
+            background-color: #000;
+            text-align: center;
         }
-        .header-logo {
-            flex-shrink: 0;
-            width: 140px;
-            height: 140px;
-            /* Menggunakan URL gambar logo dari gambar yang Anda berikan */
-            background-image: url('https://i.ibb.co/C9kH9bX/logo-gmc-11th.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
+        .banner-header img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
-        .header-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .header-text h1 {
-            font-size: 28pt;
-            font-weight: bold;
-            margin: 0 0 5px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .header-text p {
-            font-size: 12pt;
-            margin: 0;
-            color: #c0c0c0; /* Warna abu-abu muda/perak untuk sub-judul */
-            letter-spacing: 0.5px;
-        }
-
-        /* Konten Utama */
         .main-content {
-            padding: 25px 40px;
+            padding: 30px 40px;
+            background-color: #faf8f5;
         }
         h2 {
             font-size: 14pt;
@@ -86,7 +53,7 @@
         .box {
             background: #ffffff;
             border: 1px solid #ddd;
-            padding: 15px 20px;
+            padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
             text-align: center;
@@ -137,13 +104,9 @@
 </head>
 <body>
 
-<!-- Kop Surat (Header) Baru -->
-<div class="header-wrapper">
-    <div class="header-logo"></div> <!-- Logo lencana emas dari gambar banner -->
-    <div class="header-text">
-        <h1>STAYSAFE GENERATION</h1> <!-- Judul utama emas -->
-        <p>MONITORING CENTRAL (GMC)</p> <!-- Sub-judul perak -->
-    </div>
+<!-- Kop Banner Resmi -->
+<div class="banner-header">
+    <img src="https://i.ibb.co/C9kH9bX/logo-gmc-11th.png" alt="Staysafe Generation Monitoring Central GMC Banner" onerror="this.src='https://raw.githubusercontent.com/teamstaysafewesing-crypto/staysafe-generation-monitoring-central/main/banner.png'">
 </div>
 
 <!-- Konten Utama -->
@@ -153,9 +116,8 @@
     
     <div class="box">
         <p style="margin: 0 0 8px 0; font-weight: bold; color: #c0392b; font-size: 11pt;">Akses Langsung Formulir Pengaduan:</p>
-        <!-- https://forms.gle/vkt6dZ9GD9mKXRLU6 -->
         <a href="https://forms.gle/vHzN5uhv5eqHV4x36" target="_blank" class="cta-btn">BUKA FORMULIR PENGADUAN</a>
-        <p style="font-size: 9pt; color: #7f8c8d; margin-top: 10px;">*Pastikan status formulir di Google Drive dalam keadaan "Menerima jawaban" (ikon toggle berwarna hijau).</p>
+        <p style="font-size: 9pt; color: #7f8c8d; margin-top: 10px;">*Pastikan status formulir di Google Drive dalam keadaan "Menerima jawaban".</p>
     </div>
 
     <h2>2. Spesifikasi Alur Kerja Laporan (Workflow)</h2>
