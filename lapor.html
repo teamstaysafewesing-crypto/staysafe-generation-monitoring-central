@@ -20,6 +20,7 @@
             background-color: #faf8f5;
             line-height: 1.4;
         }
+        /* Kop Banner Lengkap di Bagian Awal */
         .banner-header {
             width: 100%;
             background-color: #000;
@@ -103,9 +104,18 @@
 </head>
 <body>
 
+<!-- Kop Banner Lengkap di Awal Dokumen -->
 <div class="banner-header">
-    <img src="https://i.ibb.co/C9kH9bX/logo-gmc-11th.png" alt="Staysafe Generation Monitoring Central GMC Banner">
+    <img src="https://i.ibb.co/C9kH9bX/logo-gmc-11th.png" alt="Staysafe Generation Monitoring Central GMC Banner" id="banner-img">
 </div>
+
+<script>
+    // Otomatis mendeteksi jika Anda mengunggah file banner utuh bernama banner.png di repository GitHub Anda
+    const bannerImg = document.getElementById('banner-img');
+    bannerImg.onerror = function() {
+        this.src = 'banner.png';
+    };
+</script>
 
 <div class="main-content">
     <h2>1. Informasi Akses Formulir Resmi</h2>
