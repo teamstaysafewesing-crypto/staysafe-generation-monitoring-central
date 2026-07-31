@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pusat Pengaduan - Staysafe Generation GMC</title>
     <style>
+        /* Reset Dasar */
         @page {
             size: A4;
             margin: 0;
@@ -20,21 +21,24 @@
             background-color: #faf8f5;
             line-height: 1.4;
         }
+
+        /* Desain Kop Surat (Header) Baru */
         .header-wrapper {
             width: 100%;
-            background-color: #0a0a0a;
-            color: #d4af37;
+            background-color: #0a0a0a; /* Latar belakang hitam pekat */
+            color: #d4af37; /* Warna emas untuk teks utama */
             padding: 30px 40px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             gap: 30px;
-            border-bottom: 5px solid #d4af37;
+            border-bottom: 5px solid #d4af37; /* Garis bawah emas tebal */
         }
         .header-logo {
             flex-shrink: 0;
             width: 140px;
             height: 140px;
+            /* Menggunakan URL gambar logo dari gambar yang Anda berikan */
             background-image: url('https://i.ibb.co/C9kH9bX/logo-gmc-11th.png');
             background-size: contain;
             background-repeat: no-repeat;
@@ -55,9 +59,11 @@
         .header-text p {
             font-size: 12pt;
             margin: 0;
-            color: #c0c0c0;
+            color: #c0c0c0; /* Warna abu-abu muda/perak untuk sub-judul */
             letter-spacing: 0.5px;
         }
+
+        /* Konten Utama */
         .main-content {
             padding: 25px 40px;
         }
@@ -97,10 +103,14 @@
             font-size: 11pt;
             margin-top: 8px;
         }
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
             font-size: 10pt;
             background-color: #ffffff;
         }
@@ -127,22 +137,25 @@
 </head>
 <body>
 
+<!-- Kop Surat (Header) Baru -->
 <div class="header-wrapper">
-    <div class="header-logo"></div>
+    <div class="header-logo"></div> <!-- Logo lencana emas dari gambar banner -->
     <div class="header-text">
-        <h1>STAYSAFE GENERATION</h1>
-        <p>MONITORING CENTRAL (GMC)</p>
+        <h1>STAYSAFE GENERATION</h1> <!-- Judul utama emas -->
+        <p>MONITORING CENTRAL (GMC)</p> <!-- Sub-judul perak -->
     </div>
 </div>
 
+<!-- Konten Utama -->
 <div class="main-content">
     <h2>1. Informasi Akses Formulir Resmi</h2>
     <p>Formulir pengaduan resmi Staysafe GMC telah aktif dan terhubung ke dalam sistem pelaporan Telegram admin. Silakan gunakan link di bawah ini untuk mengakses atau menyebarkan formulir kepada anggota:</p>
     
     <div class="box">
         <p style="margin: 0 0 8px 0; font-weight: bold; color: #c0392b; font-size: 11pt;">Akses Langsung Formulir Pengaduan:</p>
-        <a href="https://forms.gle/zHmBLtzWbJHugZXA6" target="_blank" class="cta-btn">BUKA FORMULIR PENGADUAN</a>
-        <p style="font-size: 9pt; color: #7f8c8d; margin-top: 10px;">*Pastikan status formulir di Google Drive dalam keadaan "Menerima jawaban".</p>
+        <!-- Link Google Form Anda -->
+        <a href="https://forms.gle/vHzN5uhv5eqHV4x36" target="_blank" class="cta-btn">BUKA FORMULIR PENGADUAN</a>
+        <p style="font-size: 9pt; color: #7f8c8d; margin-top: 10px;">*Pastikan status formulir di Google Drive dalam keadaan "Menerima jawaban" (ikon toggle berwarna hijau).</p>
     </div>
 
     <h2>2. Spesifikasi Alur Kerja Laporan (Workflow)</h2>
@@ -154,28 +167,30 @@
     </ul>
 
     <h2>3. Ringkasan Parameter Teknis Sistem</h2>
-    <table>
-        <tr>
-            <th>Komponen Sistem</th>
-            <th>Nama Objek / Target</th>
-            <th>Keterangan Status</th>
-        </tr>
-        <tr>
-            <td>Google Form</td>
-            <td>Formulir pengaduan staysafe GMC</td>
-            <td>Aktif & Menerima Jawaban</td>
-        </tr>
-        <tr>
-            <td>Spreadsheet Backend</td>
-            <td>Formulir Pengaduan Staysafe Generation (Jawaban)</td>
-            <td>Sinkronisasi Berhasil</td>
-        </tr>
-        <tr>
-            <td>Telegram Bot & Chat ID</td>
-            <td>Token API Bot & Group <span style="font-style: italic; font-weight: bold; color: #8e44ad;">-4363216200</span></td>
-            <td>Terhubung & Berjalan Normal</td>
-        </tr>
-    </table>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Komponen Sistem</th>
+                <th>Nama Objek / Target</th>
+                <th>Keterangan Status</th>
+            </tr>
+            <tr>
+                <td>Google Form</td>
+                <td>Formulir pengaduan staysafe GMC</td>
+                <td>Aktif & Menerima Jawaban</td>
+            </tr>
+            <tr>
+                <td>Spreadsheet Backend</td>
+                <td>Formulir Pengaduan Staysafe Generation (Jawaban)</td>
+                <td>Sinkronisasi Berhasil</td>
+            </tr>
+            <tr>
+                <td>Telegram Bot & Chat ID</td>
+                <td>Token API Bot & Group <span style="font-style: italic; font-weight: bold; color: #8e44ad;">-4363216200</span></td>
+                <td>Terhubung & Berjalan Normal</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <div class="footer">
