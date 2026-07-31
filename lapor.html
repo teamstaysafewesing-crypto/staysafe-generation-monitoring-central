@@ -20,7 +20,6 @@
             background-color: #faf8f5;
             line-height: 1.4;
         }
-        /* Kop Banner Lengkap di Bagian Awal */
         .banner-header {
             width: 100%;
             background-color: #000;
@@ -30,6 +29,32 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+        /* Tambahan Kotak Slogan Sesuai Banner */
+        .slogan-bar {
+            width: 100%;
+            background-color: #0d0d0d;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            border-bottom: 3px solid #d4af37;
+            flex-wrap: wrap;
+        }
+        .slogan-item {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid #d4af37;
+            border-radius: 30px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 9.5pt;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .slogan-item span {
+            color: #d4af37;
+            font-weight: bold;
         }
         .main-content {
             padding: 30px 40px;
@@ -104,13 +129,25 @@
 </head>
 <body>
 
-<!-- Kop Banner Lengkap di Awal Dokumen -->
+<!-- Kop Banner Utama -->
 <div class="banner-header">
     <img src="https://i.ibb.co/C9kH9bX/logo-gmc-11th.png" alt="Staysafe Generation Monitoring Central GMC Banner" id="banner-img">
 </div>
 
+<!-- Bar Slogan Tambahan Sesuai Keinginan Anda -->
+<div class="slogan-bar">
+    <div class="slogan-item">
+        <span>🛡️ MEMIMPIN</span> DENGAN INTEGRITAS
+    </div>
+    <div class="slogan-item">
+        <span>🔍 MEMANTAU</span> DENGAN TELITI
+    </div>
+    <div class="slogan-item">
+        <span>👥 BERSAMA</span> MENCIPTAKAN KEAMANAN
+    </div>
+</div>
+
 <script>
-    // Otomatis mendeteksi jika Anda mengunggah file banner utuh bernama banner.png di repository GitHub Anda
     const bannerImg = document.getElementById('banner-img');
     bannerImg.onerror = function() {
         this.src = 'banner.png';
