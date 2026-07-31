@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pusat Pengaduan - Staysafe Generation GMC</title>
     <style>
+        /* Pengaturan Dasar Dokumen */
         @page {
             size: A4;
-            margin: 15mm 12mm;
-            background-color: #faf8f5;
+            margin: 0; /* Margin diatur 0 untuk kop full-width */
         }
         *, *::before, *::after {
             box-sizing: border-box;
@@ -17,111 +17,146 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            color: #2c3e50;
+            color: #333;
             background-color: #faf8f5;
-            line-height: 1.25;
+            line-height: 1.4;
         }
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 25px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 5px solid #d4af37;
+
+        /* Desain Kop Surat (Header) yang Diadaptasi */
+        .header-wrapper {
+            width: 100%;
+            background-color: #0a0a0a; /* Latar belakang hitam elegan dari banner */
+            color: #d4af37; /* Warna emas untuk teks */
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 30px;
+            border-bottom: 5px solid #d4af37;
         }
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+        .header-logo {
+            flex-shrink: 0;
+            width: 140px; /* Ukuran lencana diperbesar agar terlihat detail */
+            height: 140px;
+            background-image: url('https://i.ibb.co/C9kH9bX/logo-gmc-11th.png'); /* Menggunakan gambar logo banner yang Anda berikan */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
-        .header h1 {
-            font-size: 18pt;
-            color: #1a252f;
-            margin: 0 0 5px 0;
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .header-text h1 {
+            font-size: 28pt;
             font-weight: bold;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
-        .header p {
-            font-size: 10pt;
-            color: #7f8c8d;
+        .header-text p {
+            font-size: 12pt;
             margin: 0;
+            color: #c0c0c0; /* Warna perak/abu-abu muda seperti di banner */
+            letter-spacing: 0.5px;
         }
+
+        /* Pengaturan Konten Utama */
+        .main-content {
+            padding: 25px 40px;
+        }
+
         h2 {
-            font-size: 13pt;
+            font-size: 14pt;
             color: #2980b9;
             border-left: 4px solid #2980b9;
-            padding-left: 8px;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            padding-left: 10px;
+            margin-top: 25px;
+            margin-bottom: 12px;
         }
         p, li {
-            font-size: 10pt;
-            margin-bottom: 8px;
+            font-size: 10.5pt;
+            margin-bottom: 10px;
         }
         ul {
-            margin: 5px 0 15px 20px;
+            margin: 8px 0 20px 25px;
             padding: 0;
         }
         .box {
-            background: #fdfbf7;
-            border: 1px solid #e2dedb;
-            padding: 12px 15px;
-            border-radius: 6px;
-            margin: 15px 0;
+            background: #ffffff; /* Box dibuat putih agar kontras dengan background halaman */
+            border: 1px solid #ddd;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .cta-btn {
             display: inline-block;
             background-color: #27ae60;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: bold;
-            margin-top: 5px;
+            font-size: 11pt;
+            margin-top: 8px;
+            transition: background-color 0.2s;
+        }
+        .cta-btn:hover {
+            background-color: #219150;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 9.5pt;
+            margin: 20px 0;
+            font-size: 10pt;
+            background-color: #ffffff;
         }
         th, td {
-            border: 1px solid #dcdde1;
-            padding: 8px 10px;
+            border: 1px solid #ddd;
+            padding: 10px 12px;
             text-align: left;
         }
         th {
-            background-color: #f5f6fa;
+            background-color: #f0f0f0;
             color: #2c3e50;
             font-weight: bold;
         }
         .footer {
             text-align: center;
-            font-size: 8.5pt;
-            color: #95a5a6;
-            margin-top: 25px;
+            font-size: 9pt;
+            color: #777;
+            margin-top: 40px;
+            padding: 20px;
             border-top: 1px solid #eaeaea;
-            padding-top: 10px;
+            background-color: #f5f5f5;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h1>STAYSAFE GENERATION MONITORING CENTRAL (GMC)</h1>
-        <p>Pusat Pengaduan & Integrasi Sistem Otomatisasi Laporan</p>
+<!-- Kop Surat Baru -->
+<div class="header-wrapper">
+    <div class="header-logo"></div> <!-- Logo lencana emas dari banner -->
+    <div class="header-text">
+        <h1>STAYSAFE GENERATION</h1> <!-- Judul utama emas -->
+        <p>MONITORING CENTRAL (GMC)</p> <!-- Sub-judul perak -->
     </div>
+</div>
 
+<!-- Konten Utama -->
+<div class="main-content">
     <h2>1. Informasi Akses Formulir Resmi</h2>
-    <p>Formulir pengaduan resmi Staysafe GMC telah aktif dan terhubung ke sistem Telegram admin. Silakan klik tombol di bawah ini untuk langsung mengisi atau membagikan formulir:</p>
+    <p>Formulir pengaduan resmi Staysafe GMC telah aktif dan terhubung ke dalam sistem pelaporan Telegram admin. Silakan gunakan link di bawah ini untuk mengakses atau menyebarkan formulir kepada anggota:</p>
     
     <div class="box">
-        <p style="margin: 0 0 5px 0; font-weight: bold; color: #c0392b;">Akses Langsung Formulir Pengaduan:</p>
+        <p style="margin: 0 0 8px 0; font-weight: bold; color: #c0392b; font-size: 11pt;">Akses Langsung Formulir Pengaduan:</p>
+        <!-- Link Google Form Anda -->
         <a href="https://forms.gle/8MQPkzqaLNLl8qb78" target="_blank" class="cta-btn">BUKA FORMULIR PENGADUAN</a>
-        <p style="font-size: 8.5pt; color: #7f8c8d; margin-top: 8px;">*Pastikan status formulir di Google Drive dalam keadaan menerima jawaban.</p>
+        <p style="font-size: 9pt; color: #7f8c8d; margin-top: 10px;">*Pastikan status formulir di Google Drive dalam keadaan "Menerima jawaban" (ikon toggle berwarna hijau).</p>
     </div>
 
     <h2>2. Spesifikasi Alur Kerja Laporan (Workflow)</h2>
@@ -129,7 +164,7 @@
         <li><strong>Pengisian Data:</strong> Pelapor mengisi kategori masalah dan rincian kronologi melalui tombol akses di atas.</li>
         <li><strong>Penyimpanan Basis Data:</strong> Data respons masuk secara otomatis ke dalam Google Spreadsheet terkait.</li>
         <li><strong>Eksekusi Skrip:</strong> Google Apps Script membaca baris data baru menggunakan pemicu kejadian <span style="font-style: italic; font-weight: bold; color: #8e44ad;">OnFormSubmit</span>.</li>
-        <li><strong>Notifikasi Telegram:</strong> Pesan format rapi dikirimkan secara instan ke grup chat <code style="background: #eee; padding: 2px 4px;">[ADMIN] Tim Inti Staysafe GMC</code>.</li>
+        <li><strong>Notifikasi Telegram:</strong> Pesan format rapi dikirimkan secara instan ke grup chat <code style="background: #eee; padding: 3px 5px;">[ADMIN] Tim Inti Staysafe GMC</code>.</li>
     </ul>
 
     <h2>3. Ringkasan Parameter Teknis Sistem</h2>
@@ -155,10 +190,10 @@
             <td>Terhubung & Berjalan Normal</td>
         </tr>
     </table>
+</div>
 
-    <div class="footer">
-        Dokumen Panduan & Integrasi Sistem • Staysafe Generation Monitoring Central (GMC) © 2026
-    </div>
+<div class="footer">
+    Dokumen Panduan & Integrasi Sistem • Staysafe Generation Monitoring Central (GMC) © 2026
 </div>
 
 </body>
