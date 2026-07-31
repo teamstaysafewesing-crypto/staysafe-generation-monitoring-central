@@ -146,7 +146,8 @@
 
 <div class="main-content">
     <h2>1. Informasi Akses Formulir Resmi</h2>
-    <p>Formulir pengaduan resmi Staysafe GMC telah aktif dan terhubung ke dalam sistem pelaporan Telegram admin. Silakan gunakan link di bawah ini untuk mengakses atau menyebarkan formulir kepada anggota:</p>
+    <p>Formulir pengaduan resmi Staysafe GMC telah aktif dan terhubung ke dalam sistem pelaporan Telegram admin. Di dalam formulir tersebut, pelapor diwajibkan untuk melampirkan bukti tangkapan layar serta menuliskan kronologi kejadian secara lengkap dan jelas guna memudahkan tim dalam melakukan verifikasi dan penanganan masalah.</p>
+    <p>Silakan gunakan tombol di bawah ini untuk mengakses atau menyebarkan formulir pengaduan kepada anggota:</p>
     
     <div class="box">
         <p style="margin: 0 0 8px 0; font-weight: bold; color: #c0392b; font-size: 11pt;">Akses Langsung Formulir Pengaduan:</p>
@@ -156,10 +157,10 @@
 
     <h2>2. Spesifikasi Alur Kerja Laporan (Workflow)</h2>
     <ul>
-        <li><strong>Pengisian Data:</strong> Pelapor mengisi kategori masalah dan rincian kronologi melalui tombol akses di atas.</li>
+        <li><strong>Pengisian Data:</strong> Pelapor mengisi kategori masalah, menyertakan bukti tangkapan layar, serta rincian kronologi kejadian melalui tombol akses di atas.</li>
         <li><strong>Penyimpanan Basis Data:</strong> Data respons masuk secara otomatis ke dalam Google Spreadsheet terkait.</li>
         <li><strong>Eksekusi Skrip:</strong> Google Apps Script membaca baris data baru menggunakan pemicu kejadian <span style="font-style: italic; font-weight: bold; color: #8e44ad;">OnFormSubmit</span>.</li>
-        <li><strong>Notifikasi Telegram:</strong> Pesan format rapi dikirimkan secara instan ke grup chat <code style="background: #eee; padding: 3px 5px;">[ADMIN] Tim Inti Staysafe GMC</code>.</li>
+        <li><strong>Notifikasi Telegram:</strong> Pesan format rapi beserta bukti dan kronologi dikirimkan secara instan ke grup chat <code style="background: #eee; padding: 3px 5px;">[ADMIN] Tim Inti Staysafe GMC</code>.</li>
     </ul>
 
     <h2>3. Ringkasan Parameter Teknis Sistem</h2>
@@ -173,7 +174,7 @@
             <tr>
                 <td>Google Form</td>
                 <td>Formulir pengaduan staysafe GMC</td>
-                <td>Aktif & Menerima Jawaban (Kategori & Kronologi)</td>
+                <td>Aktif & Menerima Jawaban (Kategori, Bukti, & Kronologi)</td>
             </tr>
             <tr>
                 <td>Spreadsheet Backend</td>
